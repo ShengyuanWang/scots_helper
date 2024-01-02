@@ -5,6 +5,7 @@ import {ref} from "vue";
 // default import from firebase
 import { storage } from '/src/firebase.js'
 import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebase/storage";
+import { getDatabase, ref as databaseRef, onValue, child, get} from "firebase/database";
 
 const banner = ref({
   trade:{
@@ -62,25 +63,22 @@ listAll(listRef)
   // Uh-oh, an error occurred!
 });
 
-// for (const item in banner.value) {
-//   console.log('/icons/'+item+'.png')
-//   getDownloadURL(storageRef(storage, 'icons/'+item+'.png'))
-//       .then((metadata) => {
-//         console.log(banner.value.item)
-//         console.log(metadata);
-//       })
-//       .catch((error) => {
-//         console.log('error occured for loadImage');
-//       });
-// }
-// getDownloadURL(storageRef(storage, 'icons/'+'apartment'+'.png'))
-//     .then((metadata) => {
-//       banner.value.apartment.link = metadata;
-//       console.log(metadata);
-//     })
-//     .catch((error) => {
-//       console.log('error occured for loadImage');
-//     });
+const activityList = ref();
+const db = getDatabase();
+const dbRef = databaseRef(db);
+get(child(dbRef, 'activity')).then((snapshot)=>{
+  if (snapshot.exists()){
+    console.log(snapshot.val());
+    activityList.value = snapshot.val();
+    console.log('activity', activityList.value);
+
+  } else {
+    console.log("No data available")
+  }
+}).catch((error) => {
+  console.error(error);
+})
+
 
 
 
@@ -102,8 +100,7 @@ listAll(listRef)
   </div>
   <div class="scroll-activity">
     <h2>校园活动</h2>
-    <activity-box v-for="v in [1, 2, 3]" url="https://avatars.githubusercontent.com/u/78770936?v=4" abstract="hello world 我爱麻衣学姐" date="2024-01-01">
-
+    <activity-box v-for="item in activityList" :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
     </activity-box>
   </div>
 

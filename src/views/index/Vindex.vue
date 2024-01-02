@@ -9,50 +9,41 @@ import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebas
 const banner = ref({
   trade:{
     name: '二手闲置',
-        link: '/src/assets/icons/grids/trade.png',
-        url: '/pages/index/secondHand/secondHand'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftrade.png?alt=media&token=ac9170ff-5343-4bb5-a152-a5bfe4c93390'
   },
   apartment:{
     name: '租房信息',
-        link: '/src/assets/icons/grids/apartment.png',
-        url: '/pages/index/rent/rent'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fapartment.png?alt=media&token=2e272a12-fc7e-42a2-b25e-68a684be1f63'
   },
   topics:{
     name: '话题讨论',
-        link: '/src/assets/icons/grids/topics.png',
-        url: '/pages/index/topics/topics'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftopics.png?alt=media&token=2fcc2dce-de36-442a-8947-b6f3968c1b1a'
   },
   booklet:{
     name: '新生手册',
-        link: '/src/assets/icons/grids/booklet.png',
-        url: '/pages/index/guideBook/guideBook'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fbooklet.png?alt=media&token=ac384bd7-e682-40e6-9cdf-6efdc132a537'
   },
   groupchat:{
     name: '官方社群',
-        link: '/src/assets/icons/grids/group-chat.png',
-        url: '/pages/index/groupChat/groupChat'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fgroupchat.png?alt=media&token=c6db5159-a6ac-4bed-8198-958c6142552b'
   },
   plane:{
     name: '新生接机',
-        link: '/src/assets/icons/grids/plane.png',
-        url: '/pages/index/pickup/pickup'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fplane.png?alt=media&token=db01b4b2-3418-4005-95d1-b65568edd05f'
   },
   location:{
     name: '校园周边',
-        link: '/src/assets/icons/grids/location.png',
-        url: '/pages/index/campus/campus'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Flocation.png?alt=media&token=86006583-0afc-4140-a235-c2213e1a1553'
   },
   coins:{
     name: '开发团队',
-        link: '/src/assets/icons/grids/coins.png',
-        url: '/pages/index/about/about'
+        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fcoins.png?alt=media&token=56eb01f9-d5ee-46bc-bbeb-7fb07e4fed9f'
   }
 })
 
 // ROLLING BANNER
 const rollingBannerURL = ref([]);
 const listRef = storageRef(storage, 'bannerImage');
-
 // Find all the prefixes and items.
 listAll(listRef)
     .then((res) => {
@@ -71,6 +62,26 @@ listAll(listRef)
   // Uh-oh, an error occurred!
 });
 
+// for (const item in banner.value) {
+//   console.log('/icons/'+item+'.png')
+//   getDownloadURL(storageRef(storage, 'icons/'+item+'.png'))
+//       .then((metadata) => {
+//         console.log(banner.value.item)
+//         console.log(metadata);
+//       })
+//       .catch((error) => {
+//         console.log('error occured for loadImage');
+//       });
+// }
+// getDownloadURL(storageRef(storage, 'icons/'+'apartment'+'.png'))
+//     .then((metadata) => {
+//       banner.value.apartment.link = metadata;
+//       console.log(metadata);
+//     })
+//     .catch((error) => {
+//       console.log('error occured for loadImage');
+//     });
+
 
 
 </script>
@@ -85,7 +96,7 @@ listAll(listRef)
   </div>
   <div class="select-bar">
     <div v-for="item in banner" class="select-item">
-      <img :src=item.link style="width: 8vw; position: absolute; left: 28%; margin-top: 1vh;" :alt="item.name">
+      <img :src=item.url style="width: 8vw; position: absolute; left: 28%; margin-top: 1vh;" :alt="item.name">
       <p>{{item.name}}</p>
     </div>
   </div>

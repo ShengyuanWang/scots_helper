@@ -1,6 +1,21 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
+import VueFullscreen from 'vue-fullscreen'
+import router from './router'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import axios from "axios";
+import PerfectScrollbar from 'vue3-perfect-scrollbar'
+import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
+import naive from 'naive-ui'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-createApp(App).mount('#app')
+
+const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+app.config.globalProperties.axios=axios //全局配置axios
+app.use(router).use(ElementPlus).use(PerfectScrollbar).use(naive).mount('#app')

@@ -8,6 +8,22 @@ import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebas
 import { getDatabase, ref as databaseRef, onValue, child, get} from "firebase/database";
 import { useWindowSize } from 'vue-window-size';
 
+const heightTemp = ref();
+window.addEventListener("resize", ()=> {
+  heightTemp.value = (window.innerHeight) + 'px';
+  document.getElementById("app").style.height = heightTemp.value;
+});
+window.addEventListener("DOMContentLoaded", ()=> {
+  heightTemp.value = (window.innerHeight) + 'px';
+  document.getElementById("app").style.height = heightTemp.value;
+})
+
+
+
+
+
+
+
 const banner = ref({
   trade:{
     name: '二手闲置',

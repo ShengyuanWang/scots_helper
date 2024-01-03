@@ -6,6 +6,7 @@ import {ref} from "vue";
 import { storage } from '/src/firebase.js'
 import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebase/storage";
 import { getDatabase, ref as databaseRef, onValue, child, get} from "firebase/database";
+import { useWindowSize } from 'vue-window-size';
 
 const banner = ref({
   trade:{
@@ -41,6 +42,7 @@ const banner = ref({
         url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fcoins.png?alt=media&token=56eb01f9-d5ee-46bc-bbeb-7fb07e4fed9f'
   }
 })
+const { width, height } = useWindowSize();
 
 // ROLLING BANNER
 const rollingBannerURL = ref([]);
@@ -86,22 +88,32 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
 
 <template>
 <perfect-scrollbar class="fullscreen">
-  <div class="header"><h2>MAC CCC 校园小助手</h2></div>
-  <div class="rolling-banner">
+  <div class="header"><h2>Scots 小助手</h2></div>
+  <div class="rolling-banner" v-show="width < 800">
     <n-carousel autoplay centered-slides dot-placement="bottom" draggable keyboard>
       <img v-for="item in rollingBannerURL" class="carousel-img" :src="item" alt="error">
     </n-carousel>
   </div>
   <div class="select-bar">
     <div v-for="item in banner" class="select-item">
-      <img :src=item.url style="width: 8vw; position: absolute; left: 28%; margin-top: 1vh;" :alt="item.name">
+      <img :src=item.url :alt="item.name">
       <p>{{item.name}}</p>
     </div>
   </div>
   <div class="scroll-activity">
-    <h2>校园活动</h2>
-    <activity-box v-for="item in activityList" :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
-    </activity-box>
+    <h2 v-show="width < 800">校园活动</h2>
+    <div class="flex-item" v-for="item in activityList">
+      <activity-box :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
+      </activity-box>
+    </div>
+    <div class="flex-item" v-for="item in activityList">
+      <activity-box :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
+      </activity-box>
+    </div>
+
+
+
+
   </div>
 
 
@@ -154,6 +166,13 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     border-radius: 2vw;
   }
 
+  .select-bar .select-item img {
+    width: 8vw;
+    position: absolute;
+    left: 28%;
+    margin-top: 1vh;
+  }
+
 
 
   .select-bar .select-item p {
@@ -180,6 +199,78 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
 }
 
 @media screen and (min-width: 800px) {
+  .header {
+    margin-top: 3vh;
+    height: 10vh;
+    margin-bottom: 2vh;
+  }
+  .header h2 {
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 8vh;
+  }
+  .carousel-img {
+    height: 20vh;
+    object-fit: fill;
+    border-radius: 4vw;
+    margin: auto;
+  }
+  .rolling-banner {
+    height: 20vh;
+    margin: auto;
+    border-radius: 4vw;
+  }
+  .select-bar {
+    width: 75vw;
+    height:24vh;
+    margin: 2vh auto auto;
+    position: relative;
+    padding: 2vw;
+    background-color: #2c3e50;
+    border-radius: 5vw;
+
+  }
+  .select-bar .select-item {
+    background-color: red;
+    position: relative;
+    float: left;
+    height: 8vh;
+    width: 20%;
+    margin: 0.6vh 1.75vw;
+    color: black;
+    font-weight: bolder;
+    border-radius: 2vw;
+  }
+
+  .select-bar .select-item img {
+    width: 2vw;
+    position: absolute;
+    left: 40%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+
+
+  .select-bar .select-item p {
+    width: 100%;
+    font-size: 1vw;
+    bottom: 3px;
+    left: 33%;
+    position: absolute;
+  }
+
+  .scroll-activity {
+    width: 90%;
+    margin-top: 2vh;
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .scroll-activity .flex-item {
+    width: 33%;
+  }
 
 }
 

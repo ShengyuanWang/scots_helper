@@ -46,8 +46,8 @@ const clickInfo = () =>{
 
 <style scoped>
 .info {
-  width: 90%;
-  height: 18vh;
+  width: 100%;
+  height: 100%;
   margin: 0.5vh 5vw 0.5vh 5vw;
   background-color: grey;
   display: flex;
@@ -56,7 +56,7 @@ const clickInfo = () =>{
 }
 .info .img {
   width: 35%;
-  margin: 1vh auto;
+  margin: 1% auto;
   background-color: red;
   padding: 2%;
   border-radius: 10px;
@@ -66,20 +66,20 @@ const clickInfo = () =>{
 
 .info .detail .abstract{
   color: black;
-  font-size: 3vw;
+  font-size: 1.3vw;
   font-weight: bold;
 
 }
 
 .info .detail .date{
   color: black;
-  font-size: 3vw;
+  font-size: 1vw;
   font-weight: bold;
   position: absolute;
   bottom: 5%;
   right: 5%;
-
 }
+
 .info .detail {
   width: 60%;
   margin: 0.5vh auto;

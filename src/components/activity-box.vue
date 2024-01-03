@@ -34,7 +34,7 @@ const clickInfo = () =>{
 <template>
 <div class="info" @click="clickInfo">
   <div class="img">
-    <img :src="url" style="width: 100%; height: 100%" alt="error">
+    <img :src="url" style="width: 100%; height: 100%; border-radius: 10%" alt="error">
   </div>
   <div class="detail">
     <p class="abstract">{{props.abstract}}</p>
@@ -48,32 +48,50 @@ const clickInfo = () =>{
 .info {
   width: 100%;
   height: 100%;
-  margin: 0.5vh 5vw 0.5vh 5vw;
-  background-color: grey;
+  margin: 0.5vh;
+  background-color: #86c3e3;
   display: flex;
   position: relative;
-  border-radius: 10px;
+  border-radius: 30px;
 }
+
+@media screen and (width < 800px){
+  .info:hover {
+    border-color: #194167;
+    border-style: groove;
+    border-width: 2px;
+    box-shadow: 1px -2px #2c3e50;
+  }
+}
+
+@media screen and (width > 800px){
+  .info:hover {
+    border-color: #194167;
+    border-style: groove;
+    border-width: 10px;
+    box-shadow: 6px -6px #2c3e50;
+  }
+}
+
 .info .img {
   width: 35%;
   margin: 1% auto;
-  background-color: red;
   padding: 2%;
-  border-radius: 10px;
 }
 
 
 
 .info .detail .abstract{
   color: black;
-  font-size: 1.3vw;
+  font-size: max(1.3vw, 10px);
   font-weight: bold;
-
 }
+
+
 
 .info .detail .date{
   color: black;
-  font-size: 1vw;
+  font-size: max(1vw, 12px);
   font-weight: bold;
   position: absolute;
   bottom: 5%;
@@ -83,7 +101,6 @@ const clickInfo = () =>{
 .info .detail {
   width: 60%;
   margin: 0.5vh auto;
-  background-color: green;
   padding: 5%;
   border-radius: 10px;
 }

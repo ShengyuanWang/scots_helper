@@ -95,18 +95,14 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     </n-carousel>
   </div>
   <div class="select-bar">
-    <div v-for="item in banner" class="select-item">
-      <img :src=item.url :alt="item.name">
+    <div v-for="item in banner" class="select-item" role="button">
+      <img :src=item.url :alt="item.name" >
       <p>{{item.name}}</p>
     </div>
   </div>
   <div class="scroll-activity">
     <h2 v-show="width < 800">校园活动</h2>
-    <div class="flex-item" v-for="item in activityList">
-      <activity-box :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
-      </activity-box>
-    </div>
-    <div class="flex-item" v-for="item in activityList">
+    <div class="flex-item" v-for="item in activityList" role="button">
       <activity-box :url=item.imageName :abstract=item.detail :date=item.date :link=item.actLink>
       </activity-box>
     </div>
@@ -129,7 +125,6 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     color: black;
     font-weight: bolder;
     text-align: center;
-
   }
   .carousel-img {
     width: 98%;
@@ -150,12 +145,9 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     margin: 2vh auto auto;
     position: relative;
     padding: 2vw;
-    background-color: #2c3e50;
     border-radius: 5vw;
-
   }
   .select-bar .select-item {
-    background-color: red;
     position: relative;
     float: left;
     height: 8vh;
@@ -164,6 +156,13 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     color: black;
     font-weight: bolder;
     border-radius: 2vw;
+  }
+
+  .select-bar .select-item:hover {
+    border-color: #194167;
+    border-style: groove;
+    border-width: 2px;
+    box-shadow: 1px -2px #2c3e50;
   }
 
   .select-bar .select-item img {
@@ -192,6 +191,14 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     padding-left: 5vw;
     font-size: 5vw;
     color: black;
+    text-shadow: 5px 1px 2px rgb(0, 0, 0, 20%);
+
+  }
+
+  .scroll-activity .flex-item {
+    width: 90%;
+    margin: 2vh auto;
+
   }
 
 
@@ -227,50 +234,57 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     margin: 2vh auto auto;
     position: relative;
     padding: 2vw;
-    background-color: #2c3e50;
     border-radius: 5vw;
 
   }
   .select-bar .select-item {
-    background-color: red;
     position: relative;
     float: left;
     height: 8vh;
-    width: 20%;
-    margin: 0.6vh 1.75vw;
+    width: 8vw;
+    margin: 0.6vh 4vw;
     color: black;
     font-weight: bolder;
-    border-radius: 2vw;
+    border-radius: 1vw;
+  }
+
+  .select-bar .select-item:hover {
+
+    border-color: #194167;
+    border-style: groove;
+    border-width: 10px;
+    box-shadow: 6px -6px #2c3e50;
+
   }
 
   .select-bar .select-item img {
     width: 2vw;
     position: absolute;
-    left: 40%;
+    left: 37%;
     margin-top: 1vh;
     margin-bottom: 1vh;
   }
-
-
 
   .select-bar .select-item p {
     width: 100%;
     font-size: 1vw;
     bottom: 3px;
-    left: 33%;
+    left: 26%;
     position: absolute;
   }
 
   .scroll-activity {
     width: 90%;
-    margin-top: 2vh;
+    margin: 2vh auto;
     display: flex;
     flex-flow: wrap;
   }
 
   .scroll-activity .flex-item {
-    width: 33%;
+    width: 30%;
+    margin: 1vw 1vw;
   }
+
 
 }
 

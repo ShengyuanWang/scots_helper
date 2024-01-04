@@ -186,6 +186,7 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     position: absolute;
     left: 28%;
     margin-top: 1vh;
+    margin-bottom: 1vh;
   }
 
 
@@ -193,7 +194,7 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
   .select-bar .select-item p {
     width: 100%;
     font-size: 2.8vw;
-    bottom: 3px;
+    bottom: 2px;
     left: 23%;
     position: absolute;
   }

@@ -27,35 +27,43 @@ window.addEventListener("DOMContentLoaded", ()=> {
 const banner = ref({
   trade:{
     name: '二手闲置',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftrade.png?alt=media&token=ac9170ff-5343-4bb5-a152-a5bfe4c93390'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftrade.png?alt=media&token=ac9170ff-5343-4bb5-a152-a5bfe4c93390',
+    link: "#"
   },
   apartment:{
     name: '租房信息',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fapartment.png?alt=media&token=2e272a12-fc7e-42a2-b25e-68a684be1f63'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fapartment.png?alt=media&token=2e272a12-fc7e-42a2-b25e-68a684be1f63',
+    link: "#"
   },
   topics:{
     name: '话题讨论',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftopics.png?alt=media&token=2fcc2dce-de36-442a-8947-b6f3968c1b1a'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftopics.png?alt=media&token=2fcc2dce-de36-442a-8947-b6f3968c1b1a',
+    link: "#"
   },
   booklet:{
     name: '新生手册',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fbooklet.png?alt=media&token=ac384bd7-e682-40e6-9cdf-6efdc132a537'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fbooklet.png?alt=media&token=ac384bd7-e682-40e6-9cdf-6efdc132a537',
+    link: "https://www.macalester.edu/isp/wp-content/uploads/sites/95/2023/06/ISH-2023-24.pdf"
   },
   groupchat:{
     name: '官方社群',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fgroupchat.png?alt=media&token=c6db5159-a6ac-4bed-8198-958c6142552b'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fgroupchat.png?alt=media&token=c6db5159-a6ac-4bed-8198-958c6142552b',
+    link: "#"
   },
   plane:{
     name: '新生接机',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fplane.png?alt=media&token=db01b4b2-3418-4005-95d1-b65568edd05f'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fplane.png?alt=media&token=db01b4b2-3418-4005-95d1-b65568edd05f',
+    link: "#"
   },
   location:{
     name: '校园周边',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Flocation.png?alt=media&token=86006583-0afc-4140-a235-c2213e1a1553'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Flocation.png?alt=media&token=86006583-0afc-4140-a235-c2213e1a1553',
+    link: "#"
   },
   coins:{
     name: '开发团队',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fcoins.png?alt=media&token=56eb01f9-d5ee-46bc-bbeb-7fb07e4fed9f'
+    url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fcoins.png?alt=media&token=56eb01f9-d5ee-46bc-bbeb-7fb07e4fed9f',
+    link: "#"
   }
 })
 const { width, height } = useWindowSize();
@@ -97,6 +105,10 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
   console.error(error);
 })
 
+const handleItemClick = (link) => {
+  window.open(link, '_blank')
+}
+
 
 
 
@@ -111,7 +123,7 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
     </n-carousel>
   </div>
   <div class="select-bar">
-    <div v-for="item in banner" class="select-item" role="button">
+    <div v-for="item in banner" class="select-item" role="button" @click="handleItemClick(item.link)">
       <img :src=item.url :alt="item.name" >
       <p>{{item.name}}</p>
     </div>

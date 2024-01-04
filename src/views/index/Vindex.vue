@@ -103,7 +103,7 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
 </script>
 
 <template>
-<perfect-scrollbar class="fullscreen">
+<perfect-scrollbar class="fullscreen" :style="height=heightTemp">
   <div class="header"><h2>Scots 小助手</h2></div>
   <div class="rolling-banner" v-show="width < 800">
     <n-carousel autoplay centered-slides dot-placement="bottom" draggable keyboard>

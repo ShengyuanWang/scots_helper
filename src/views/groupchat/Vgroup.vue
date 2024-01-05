@@ -36,7 +36,7 @@ getDownloadURL(storageRef(storage, 'groupchatImage/groupchat.jpeg'))
           ins: macalesterccc
         </h1>
         <h1 style="color: black">
-          若二维码过期请找工作人员寻找组织，<a href="team">点击链接</a>
+          若二维码过期请找工作人员寻找组织，<a href="https://scots-helper.vercel.app/team">点击链接</a>
         </h1>
       </div>
 

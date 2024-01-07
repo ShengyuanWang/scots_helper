@@ -6,6 +6,8 @@ import Vindex from './views/index/Vindex.vue'
 import Vgroup from "@/views/groupchat/Vgroup.vue";
 import Vteam from "@/views/team/Vteam.vue";
 import Vpend from "@/views/pending/Vpend.vue";
+import Vsell from "@/views/secondHand/Vsell.vue";
+import Vlocation from "@/views/location/Vlocation.vue";
 
 // 定义路由
 const routes = [
@@ -28,6 +30,17 @@ const routes = [
         path:'/pend',
         name: 'Vpend',
         component: Vpend
+    },
+    {
+        path:'/sell',
+        name: 'Vsell',
+        component: Vsell
+    }
+    ,
+    {
+        path:'/location',
+        name: 'Vlocation',
+        component: Vlocation
     }
 
 ]

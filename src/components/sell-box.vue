@@ -7,14 +7,15 @@ import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebas
 import { getDatabase, ref as databaseRef, onValue, child, get} from "firebase/database";
 const router = useRouter();
 const props = defineProps({
-  url: String, //人员照片 url地址
-  name: String, //个人介绍
-  info: String,
-  position: String, //职位
-  classYear: String // class Year
+  url: String, //物品照片 url地址
+  name: String, //物品名称
+  price: String, //物品价格
+  refer: String, //联系人，电话
+  date: String, //日期
 })
+
 const url = ref("");
-getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
+getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
     .then((metadata) => {
       console.log(metadata);
       url.value=metadata;
@@ -35,9 +36,16 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
       <img :src="url" style="width: 100%;; border-radius: 10%" alt="error">
     </div>
     <div class="detail">
-      <p class="infoName">{{props.name}}</p>
-      <p class="infoP">{{props.info}}</p>
-      <p class="position">{{props.position}}</p>
+      <div class="upper">
+        <p class="infoName">{{props.name}}</p>
+        <p class="infoDetail">99新</p>
+        <p class="infoPrice">{{props.price}}</p>
+      </div>
+      <div class="lower">
+        <p class="infoRefer">{{props.refer}}</p>
+        <p class="date">{{props.date}}</p>
+      </div>
+
     </div>
 
   </div>
@@ -79,15 +87,29 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
   padding: 2%;
 }
 
+.info .detail .upper {
+  height: 80%;
+}
+
+.info .detail .lower {
+  height: 30%;
+  position: relative;
+}
 
 
-.info .detail .infoName{
+.info .detail .upper .infoName{
   color: black;
   font-size: max(1.3vw, 2vh);
   font-weight: bold;
 }
 
-.info .detail .infoP{
+.info .detail .upper .infoPrice{
+  color: black;
+  font-size: min(1.3vw, 1.5vh);
+  font-weight: bold;
+}
+
+.info .detail .upper .infoDetail {
   color: black;
   font-size: min(1.3vw, 1.5vh);
   font-weight: bold;
@@ -96,13 +118,22 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
 
 
 
-.info .detail .position{
+.info .detail .lower .date{
   color: black;
   font-size: max(1vw, 12px);
   font-weight: bold;
   position: absolute;
-  bottom: 5%;
-  right: 5%;
+  bottom: 10%;
+  right: 0%;
+}
+
+.info .detail .lower .infoRefer{
+  color: black;
+  font-size: max(1vw, 12px);
+  font-weight: bold;
+  margin: 2px;
+  position: absolute;
+  right: 0;
 }
 
 .info .detail {
@@ -111,4 +142,5 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
   padding: 5%;
   border-radius: 10px;
 }
+
 </style>

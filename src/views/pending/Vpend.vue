@@ -22,6 +22,8 @@ window.addEventListener("DOMContentLoaded", ()=> {
       </div>
       <div class="pending-center">
         <h1 class="waiting-word">麻衣学长 Alan 还在全力开发中...</h1>
+        <h1 class="waiting-word"><a href="https://forms.gle/VWwVnBvpgBVsuomN8">校园周边美食投稿</a></h1>
+
       </div>
     </div>
 

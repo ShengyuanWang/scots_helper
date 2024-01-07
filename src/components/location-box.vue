@@ -7,14 +7,13 @@ import { ref as storageRef, getMetadata, getDownloadURL, listAll } from "firebas
 import { getDatabase, ref as databaseRef, onValue, child, get} from "firebase/database";
 const router = useRouter();
 const props = defineProps({
-  url: String, //人员照片 url地址
-  name: String, //个人介绍
-  info: String,
-  position: String, //职位
-  classYear: String // class Year
+  url: String, //图片url地址
+  name: String, //简略介绍
+  location: String, //日期
+  link: String //跳转地址
 })
 const url = ref("");
-getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
+getDownloadURL(storageRef(storage, '/locationImage/'+props.url))
     .then((metadata) => {
       console.log(metadata);
       url.value=metadata;
@@ -22,22 +21,20 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
     .catch((error) => {
       console.log('error occured for loadImage');
     });
-
-
-
-
+const clickInfo = () =>{
+  window.open(props.link, '_blank')
+}
 
 </script>
 
 <template>
-  <div class="info">
+  <div class="info" @click="clickInfo">
     <div class="img">
-      <img :src="url" style="width: 100%;; border-radius: 10%" alt="error">
+      <img :src="url" style="width: 100%; height: 100%; border-radius: 10%" alt="error">
     </div>
     <div class="detail">
-      <p class="infoName">{{props.name}}</p>
-      <p class="infoP">{{props.info}}</p>
-      <p class="position">{{props.position}}</p>
+      <p class="abstract">{{props.name}}</p>
+      <p class="date">{{props.location}}</p>
     </div>
 
   </div>
@@ -80,23 +77,15 @@ getDownloadURL(storageRef(storage, '/teamImage/'+props.url))
 }
 
 
-
-.info .detail .infoName{
+.info .detail .abstract{
   color: black;
-  font-size: max(1.3vw, 2vh);
-  font-weight: bold;
-}
-
-.info .detail .infoP{
-  color: black;
-  font-size: min(1.3vw, 1.5vh);
+  font-size: max(1.3vw, 10px);
   font-weight: bold;
 }
 
 
 
-
-.info .detail .position{
+.info .detail .date{
   color: black;
   font-size: max(1vw, 12px);
   font-weight: bold;

@@ -30,7 +30,7 @@ const banner = ref({
   trade:{
     name: '二手闲置',
     url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Ftrade.png?alt=media&token=ac9170ff-5343-4bb5-a152-a5bfe4c93390',
-    link: "pend"
+    link: "sell"
   },
   apartment:{
     name: '租房信息',
@@ -60,7 +60,7 @@ const banner = ref({
   location:{
     name: '校园周边',
     url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Flocation.png?alt=media&token=86006583-0afc-4140-a235-c2213e1a1553',
-    link: "pend"
+    link: "location"
   },
   coins:{
     name: '开发团队',

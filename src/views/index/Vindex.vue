@@ -35,7 +35,7 @@ const banner = ref({
   apartment:{
     name: '租房信息',
     url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Fapartment.png?alt=media&token=2e272a12-fc7e-42a2-b25e-68a684be1f63',
-    link: "pend"
+    link: "rent"
   },
   topics:{
     name: '话题讨论',

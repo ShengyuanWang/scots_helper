@@ -49,12 +49,23 @@ get(child(dbRef, 'team')).then((snapshot)=>{
   width: 90%;
   margin: 4vh auto;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .team-show .team-item {
   width: 30%;
   height: 25vh;
-  margin: 2ch auto;
+  margin: 2ch;
+}
+
+@media screen and (max-width: 800px) {
+  .team-show .team-item {
+    width: 100%;
+    height: 25vh;
+    margin: 2ch;
+  }
 }
 
 

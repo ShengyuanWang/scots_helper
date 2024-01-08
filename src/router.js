@@ -8,6 +8,7 @@ import Vteam from "@/views/team/Vteam.vue";
 import Vpend from "@/views/pending/Vpend.vue";
 import Vsell from "@/views/secondHand/Vsell.vue";
 import Vlocation from "@/views/location/Vlocation.vue";
+import Vrent from "@/views/rent/Vrent.vue";
 
 // 定义路由
 const routes = [
@@ -41,7 +42,14 @@ const routes = [
         path:'/location',
         name: 'Vlocation',
         component: Vlocation
-    }
+    },
+    {
+        path:'/rent',
+        name: 'Vrent',
+        component: Vrent
+
+    },
+
 
 ]
 

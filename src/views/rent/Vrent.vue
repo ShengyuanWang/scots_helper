@@ -18,14 +18,14 @@ window.addEventListener("DOMContentLoaded", ()=> {
   document.getElementById("app").style.height = heightTemp.value;
 });
 
-const sellList = ref();
+const rentList = ref();
 const db = getDatabase();
 const dbRef = databaseRef(db);
-get(child(dbRef, 'sell')).then((snapshot)=>{
+get(child(dbRef, 'rent')).then((snapshot)=>{
   if (snapshot.exists()){
     console.log(snapshot.val());
-    sellList.value = snapshot.val();
-    console.log('sell', sellList.value);
+    rentList.value = snapshot.val();
+    console.log('sell', rentList.value);
 
   } else {
     console.log("No data available")
@@ -54,7 +54,7 @@ const uploadImage = async (event) => {
   if(file.size === 0) return;
 
   const storage = getStorage();
-  const imageRef = storageRef(storage, `sellImage/${file.name}`);
+  const imageRef = storageRef(storage, `rent/${file.name}`);
   imageName.value = file.name;
 
   try {
@@ -71,7 +71,7 @@ const uploadImage = async (event) => {
 const writeUserData = (userId, name, price, refer, date, url) => {
   console.log('click write')
   const db = getDatabase();
-  set(databaseRef(db, 'sell/' + userId), {
+  set(databaseRef(db, 'rent/' + userId), {
     name: name,
     price: price,
     refer: refer,
@@ -86,19 +86,19 @@ const writeUserData = (userId, name, price, refer, date, url) => {
   <perfect-scrollbar class="fullscreen" :style="height=heightTemp">
     <div class="operation">
       <n-button class="n-button" type="primary"  size="large"  @click="drawer = true">
-        我要出二手！
+        我要出转租！
       </n-button>
     </div>
     <div class="sell-show">
-      <div class="sell-item" v-for="item in sellList">
+      <div class="sell-item" v-for="item in rentList">
         <sell-box :date=item.date :name=item.name :price=item.price :url=item.url :refer=item.refer></sell-box>
       </div>
     </div>
     <el-drawer v-model="drawer" title="I am the title" :with-header="false" size="50vw">
-      <p>  二手物品名称：<input v-model="form.name" placeholder="二手物品名称" /></p>
-      <p>  二手物品价格：<input v-model="form.price" placeholder="二手物品价格" /></p>
+      <p>  地点名称：<input v-model="form.name" placeholder="地点名称" /></p>
+      <p>  房租价格：<input v-model="form.price" placeholder="房租价格" /></p>
       <p>  联系人：<input v-model="form.refer" placeholder="联系人" /></p>
-      <p>  日期：<input v-model="form.date" placeholder="日期" /></p>
+      <p>  地理位置：<input v-model="form.date" placeholder="地理位置" /></p>
       <p>  图片：</p>
       <input type="file" class="inputFile" ref="imageData" accept="image/*" @change="uploadImage"/>
       <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" class="imageData">

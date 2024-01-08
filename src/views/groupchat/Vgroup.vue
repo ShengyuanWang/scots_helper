@@ -12,11 +12,12 @@ window.addEventListener("DOMContentLoaded", ()=> {
   heightTemp.value = (window.innerHeight) + 'px';
   document.getElementById("app").style.height = heightTemp.value;
 })
-
+const finishImage = ref(false)
 const groupChatURL = ref("");
 getDownloadURL(storageRef(storage, 'groupchatImage/groupchat.jpeg'))
     .then((metadata) => {
       groupChatURL.value = metadata;
+      finishImage.value = true;
     })
     .catch((error) => {
       console.log('error occured for loadImage');
@@ -26,7 +27,7 @@ getDownloadURL(storageRef(storage, 'groupchatImage/groupchat.jpeg'))
 
 <template>
   <perfect-scrollbar class="fullscreen" :style="height=heightTemp">
-    <div class="group">
+    <div class="group" v-if="finishImage">
       <div class="groupImage">
         <img :src="groupChatURL">
       </div>

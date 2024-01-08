@@ -60,6 +60,14 @@ get(child(dbRef, 'location')).then((snapshot)=>{
   margin: 2vh;
 }
 
+@media screen and (max-width: 800px){
+  .location-show .location-item {
+    width: 100%;
+    height: 20vh;
+    margin: 2vh;
+  }
+}
+
 
 
 

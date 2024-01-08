@@ -20,12 +20,8 @@ window.addEventListener("DOMContentLoaded", ()=> {
   document.getElementById("app").style.height = heightTemp.value;
 })
 
-
-
-
-
-
-
+const finishImage = ref(false);
+const finishData = ref(false)
 const banner = ref({
   trade:{
     name: '二手闲置',
@@ -75,6 +71,8 @@ const { width, height } = useWindowSize();
 const rollingBannerURL = ref([]);
 const listRef = storageRef(storage, 'bannerImage');
 // Find all the prefixes and items.
+
+
 listAll(listRef)
     .then((res) => {
       res.items.forEach((itemRef) => {
@@ -88,6 +86,7 @@ listAll(listRef)
               console.log('error occured for loadImage');
             });
       });
+      finishImage.value = true;
     }).catch((error) => {
   // Uh-oh, an error occurred!
 });
@@ -99,6 +98,7 @@ get(child(dbRef, 'activity')).then((snapshot)=>{
   if (snapshot.exists()){
     console.log(snapshot.val());
     activityList.value = snapshot.val();
+    finishData.value=true;
     console.log('activity', activityList.value);
 
   } else {
@@ -116,9 +116,6 @@ const handleItemClick = (item) => {
   }
 }
 
-
-
-
 </script>
 
 <template>
@@ -129,7 +126,7 @@ const handleItemClick = (item) => {
       <img v-for="item in rollingBannerURL" class="carousel-img" :src="item" alt="error">
     </n-carousel>
   </div>
-  <div class="select-bar">
+  <div class="select-bar" v-if="finishData && finishImage">
     <div v-for="item in banner" class="select-item" role="button" @click="handleItemClick(item)">
       <img :src=item.url :alt="item.name" >
       <p>{{item.name}}</p>

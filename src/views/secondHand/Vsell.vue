@@ -80,6 +80,11 @@ const writeUserData = (userId, name, price, refer, date, url) => {
   });
 }
 
+const size = ref('50vw');
+if (innerWidth < 800) {
+  size.value = '80vw';
+}
+
 </script>
 
 <template>
@@ -94,7 +99,7 @@ const writeUserData = (userId, name, price, refer, date, url) => {
         <sell-box :date=item.date :name=item.name :price=item.price :url=item.url :refer=item.refer></sell-box>
       </div>
     </div>
-    <el-drawer v-model="drawer" title="I am the title" :with-header="false" size="50vw">
+    <el-drawer v-model="drawer" title="I am the title" :with-header="false" :size=size>
       <p>  二手物品名称：<input v-model="form.name" placeholder="二手物品名称" /></p>
       <p>  二手物品价格：<input v-model="form.price" placeholder="二手物品价格" /></p>
       <p>  联系人：<input v-model="form.refer" placeholder="联系人" /></p>
@@ -118,8 +123,11 @@ const writeUserData = (userId, name, price, refer, date, url) => {
 
 .imageData {
   display: block;
+  width: 40%;
   margin-left: 4vw;
 }
+
+
 
 .el-drawer p {
   color: black;
@@ -190,5 +198,18 @@ const writeUserData = (userId, name, price, refer, date, url) => {
   font-size: 3vw !important;
 }
 
+@media screen and (max-width: 800px){
+  .sell-show .sell-item {
+    width: 100%;
+    height: 20vh;
+    margin: 2vh;
+  }
+
+  .imageData {
+    display: block;
+    width: 60%;
+    margin-left: 4vw;
+  }
+}
 
 </style>

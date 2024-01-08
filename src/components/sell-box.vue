@@ -123,7 +123,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
   font-size: max(1vw, 12px);
   font-weight: bold;
   position: absolute;
-  bottom: 10%;
+  bottom: 3%;
   right: 0%;
 }
 
@@ -131,7 +131,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
   color: black;
   font-size: max(1vw, 12px);
   font-weight: bold;
-  margin: 2px;
+  margin: 1px;
   position: absolute;
   right: 0;
 }

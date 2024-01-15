@@ -57,19 +57,13 @@ const clickInfo = () =>{
 
 @media screen and (max-width: 800px){
   .info:hover {
-    border-color: #194167;
-    border-style: groove;
-    border-width: 2px;
-    box-shadow: 1px -2px #2c3e50;
+    background-color: #bdddf5;
   }
 }
 
 @media screen and (min-width: 800px){
   .info:hover {
-    border-color: #194167;
-    border-style: groove;
-    border-width: 4px;
-    box-shadow: 4px -4px #2c3e50;
+    background-color: #bdddf5;
   }
 }
 

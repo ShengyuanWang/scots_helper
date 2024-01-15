@@ -102,7 +102,7 @@ if (innerWidth < 800) {
       </div>
     </div>
     <el-drawer v-model="drawer" title="I am the title" :with-header="false" :size=size>
-      <p>  地点名称：<input v-model="form.name" placeholder="地点名称" /></p>
+      <p>  地点介绍：<input v-model="form.name" placeholder="地点介绍" /></p>
       <p>  房租价格：<input v-model="form.price" placeholder="房租价格" /></p>
       <p>  联系人：<input v-model="form.refer" placeholder="联系人" /></p>
       <p>  地理位置：<input v-model="form.date" placeholder="地理位置" /></p>

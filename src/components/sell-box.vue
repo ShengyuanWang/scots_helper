@@ -9,6 +9,7 @@ const router = useRouter();
 const props = defineProps({
   url: String, //物品照片 url地址
   name: String, //物品名称
+  detail: String,
   price: String, //物品价格
   refer: String, //联系人，电话
   date: String, //日期
@@ -38,10 +39,11 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
     <div class="detail">
       <div class="upper">
         <p class="infoName">{{props.name}}</p>
-        <p class="infoDetail">99新</p>
-        <p class="infoPrice">{{props.price}}</p>
+        <p class="infoDetail">{{ props.detail}}</p>
+
       </div>
       <div class="lower">
+        <p class="infoPrice">{{props.price}}</p>
         <p class="infoRefer">{{props.refer}}</p>
         <p class="date">{{props.date}}</p>
       </div>
@@ -64,19 +66,13 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
 
 @media screen and (max-width: 800px){
   .info:hover {
-    border-color: #194167;
-    border-style: groove;
-    border-width: 2px;
-    box-shadow: 1px -2px #2c3e50;
+    background-color: #bdddf5;
   }
 }
 
 @media screen and (min-width: 800px){
   .info:hover {
-    border-color: #194167;
-    border-style: groove;
-    border-width: 4px;
-    box-shadow: 4px -4px #2c3e50;
+    background-color: #bdddf5;
   }
 }
 
@@ -103,10 +99,12 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
   font-weight: bold;
 }
 
-.info .detail .upper .infoPrice{
+.info .detail .lower .infoPrice{
   color: black;
   font-size: min(1.3vw, 1.5vh);
   font-weight: bold;
+  width: 50%;
+  display: inline;
 }
 
 .info .detail .upper .infoDetail {
@@ -134,6 +132,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
   margin: 1px;
   position: absolute;
   right: 0;
+  top: 0;
 }
 
 .info .detail {

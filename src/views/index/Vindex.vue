@@ -191,10 +191,7 @@ const handleItemClick = (item) => {
   }
 
   .select-bar .select-item:hover {
-    border-color: #194167;
-    border-style: groove;
-    border-width: 2px;
-    box-shadow: 1px -2px #2c3e50;
+    background: rgb(192, 223, 247, 90%);
   }
 
   .select-bar .select-item img {
@@ -283,10 +280,8 @@ const handleItemClick = (item) => {
 
   .select-bar .select-item:hover {
 
-    border-color: #194167;
-    border-style: groove;
-    border-width: 4px;
-    box-shadow: 4px -4px #2c3e50;
+    background: rgb(192, 223, 247, 90%);
+
 
   }
 

@@ -38,6 +38,7 @@ const drawer = ref(false)
 
 const form = reactive({
   name:'',
+  detail:'',
   price:'',
   refer:'',
   date:''
@@ -68,11 +69,12 @@ const uploadImage = async (event) => {
   }
 };
 
-const writeUserData = (userId, name, price, refer, date, url) => {
+const writeUserData = (userId, name, detail, price, refer, date, url) => {
   console.log('click write')
   const db = getDatabase();
   set(databaseRef(db, 'sell/' + userId), {
     name: name,
+    detail: detail,
     price: price,
     refer: refer,
     date: date,
@@ -96,18 +98,19 @@ if (innerWidth < 800) {
     </div>
     <div class="sell-show">
       <div class="sell-item" v-for="item in sellList">
-        <sell-box :date=item.date :name=item.name :price=item.price :url=item.url :refer=item.refer></sell-box>
+        <sell-box :date=item.date :name=item.name :detail = item.detail :price=item.price :url=item.url :refer=item.refer></sell-box>
       </div>
     </div>
     <el-drawer v-model="drawer" title="I am the title" :with-header="false" :size=size>
       <p>  二手物品名称：<input v-model="form.name" placeholder="二手物品名称" /></p>
+      <p>  二手物品介绍：<input v-model="form.detail" placeholder="二手物品介绍" maxlength="40"/></p>
       <p>  二手物品价格：<input v-model="form.price" placeholder="二手物品价格" /></p>
       <p>  联系人：<input v-model="form.refer" placeholder="联系人" /></p>
       <p>  日期：<input v-model="form.date" placeholder="日期" /></p>
       <p>  图片：</p>
       <input type="file" class="inputFile" ref="imageData" accept="image/*" @change="uploadImage"/>
       <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" class="imageData">
-      <n-button type="success" class="submit" @click="writeUserData(form.name, form.name, form.price, form.refer, form.date, imageName)">
+      <n-button type="success" class="submit" @click="writeUserData(form.name, form.name, form.detail, form.price, form.refer, form.date, imageName)">
         Submit
       </n-button>
     </el-drawer>

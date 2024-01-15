@@ -161,6 +161,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
 .info .img {
   display: block;
   width: 35%;
+  height: 80%;
   margin: auto 1vw;
   padding: 2%;
 }

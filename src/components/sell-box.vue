@@ -68,11 +68,93 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
   .info:hover {
     background-color: #bdddf5;
   }
+
+  .info .detail .upper .infoName{
+    color: black;
+    font-size: max(1.3vw, 1.8vh);
+    font-weight: bold;
+  }
+
+  .info .detail .lower .infoPrice{
+    color: black;
+    font-size: max(1.3vw, 1.5vh);
+    font-weight: bold;
+    width: 50%;
+    display: inline;
+  }
+
+  .info .detail .upper .infoDetail {
+    color: black;
+    font-size: max(1.3vw, 1.2vh);
+    font-weight: bold;
+  }
+
+
+  .info .detail .lower .date{
+    color: black;
+    font-size: max(1vw, 10px);
+    font-weight: bold;
+    position: absolute;
+    bottom: 3%;
+    right: 0%;
+  }
+
+  .info .detail .lower .infoRefer{
+    color: black;
+    font-size: max(1vw, 10px);
+    font-weight: bold;
+    margin: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 @media screen and (min-width: 800px){
   .info:hover {
     background-color: #bdddf5;
+  }
+
+  .info .detail .upper .infoName{
+    color: black;
+    font-size: max(1.3vw, 2vh);
+    font-weight: bold;
+  }
+
+  .info .detail .lower .infoPrice{
+    color: black;
+    font-size: min(1.3vw, 1.5vh);
+    font-weight: bold;
+    width: 50%;
+    display: inline;
+  }
+
+  .info .detail .upper .infoDetail {
+    color: black;
+    font-size: min(1.3vw, 1.5vh);
+    font-weight: bold;
+  }
+
+
+
+
+  .info .detail .lower .date{
+    color: black;
+    font-size: max(1vw, 12px);
+    font-weight: bold;
+    position: absolute;
+    bottom: 3%;
+    right: 0%;
+  }
+
+  .info .detail .lower .infoRefer{
+    color: black;
+    font-size: max(1vw, 12px);
+    font-weight: bold;
+    margin: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -93,47 +175,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
 }
 
 
-.info .detail .upper .infoName{
-  color: black;
-  font-size: max(1.3vw, 2vh);
-  font-weight: bold;
-}
 
-.info .detail .lower .infoPrice{
-  color: black;
-  font-size: min(1.3vw, 1.5vh);
-  font-weight: bold;
-  width: 50%;
-  display: inline;
-}
-
-.info .detail .upper .infoDetail {
-  color: black;
-  font-size: min(1.3vw, 1.5vh);
-  font-weight: bold;
-}
-
-
-
-
-.info .detail .lower .date{
-  color: black;
-  font-size: max(1vw, 12px);
-  font-weight: bold;
-  position: absolute;
-  bottom: 3%;
-  right: 0%;
-}
-
-.info .detail .lower .infoRefer{
-  color: black;
-  font-size: max(1vw, 12px);
-  font-weight: bold;
-  margin: 1px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
 
 .info .detail {
   width: 60%;

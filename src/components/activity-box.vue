@@ -69,6 +69,7 @@ const clickInfo = () =>{
 
 .info .img {
   width: 35%;
+  height: 80%;
   margin: 1% auto;
   padding: 2%;
 }

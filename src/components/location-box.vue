@@ -30,7 +30,7 @@ const clickInfo = () =>{
 <template>
   <div class="info" @click="clickInfo">
     <div class="img">
-      <img :src="url" style="width: 100%; height: auto; border-radius: 10%" alt="error" object-fit>
+      <img :src="url" style="width: 100%; height: 100%; border-radius: 10%" alt="error">
     </div>
     <div class="detail">
       <p class="abstract">{{props.name}}</p>

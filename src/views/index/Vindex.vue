@@ -56,7 +56,7 @@ const banner = ref({
   location:{
     name: '校园周边',
     url: 'https://firebasestorage.googleapis.com/v0/b/ccc-program.appspot.com/o/icons%2Flocation.png?alt=media&token=86006583-0afc-4140-a235-c2213e1a1553',
-    link: "location"
+    link: "pend"
   },
   coins:{
     name: '开发团队',

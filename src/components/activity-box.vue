@@ -34,7 +34,7 @@ const clickInfo = () =>{
 <template>
 <div class="info" @click="clickInfo">
   <div class="img">
-    <img :src="url" style="width: 100%; height: 100%; border-radius: 10%" alt="error">
+    <img :src="url" style="max-width: 100%; max-height: 100%; border-radius: 10%" alt="error">
   </div>
   <div class="detail">
     <p class="abstract">{{props.abstract}}</p>

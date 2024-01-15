@@ -34,7 +34,7 @@ getDownloadURL(storageRef(storage, '/sellImage/'+props.url))
 <template>
   <div class="info">
     <div class="img">
-      <img :src="url" style="width: 100%;; border-radius: 10%" alt="error">
+      <img :src="url" style="width: 100%; height: auto; border-radius: 10%" alt="error">
     </div>
     <div class="detail">
       <div class="upper">
